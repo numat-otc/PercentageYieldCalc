@@ -11,7 +11,7 @@ while True:
     os.system("cls")
     RATE = r/100+1
     T = i*RATE
-    for x in range(p):
+    for x in range(1,p):
         T=T*RATE+a
     T = round(T,2)
     print("TOTAL: ${}".format(T))
