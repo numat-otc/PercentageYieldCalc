@@ -1,4 +1,5 @@
 from tkinter import *  # tkinter library
+import os # windows terminal commands
 
 root = Tk()
 root.title("")  # empty title ("tk" by default)
@@ -19,10 +20,29 @@ reinvest_input          = Entry(); reinvest_input.grid(column=2)
 
 # calculate function
 def Calculate():
-    i=int(initial_input.get())
-    r=int(rate_input.get())
-    p=int(period_input.get())
-    a=int(reinvest_input.get())
+    # check if all variables are valid types
+    try:
+        i=float(initial_input.get())
+        r=float(rate_input.get())
+        p=int(period_input.get())
+        a=float(reinvest_input.get())
+    except:
+        os.system('msg "%username%" Error: value(s) invalid, must be a number.')
+        return
+
+    #error messages
+    if i not in range(1000001): # 0 - 1,000,000
+        os.system('msg "%username%" Error: [Initial investment] value invalid, range: (0 - 1,000,000).')
+        return
+    if r not in range(10001): # 0 - 10,000
+        os.system('msg "%username%" Error: [Annual rate] value invalid, range: (0 - 10,000).')
+        return
+    if p not in range(1,101): # 1 - 100
+        os.system('msg "%username%" Error: [Amount of years] value invalid, range: (1 - 100).')
+        return
+    if a not in range(-100000,100001): # -100,000 - 100,000
+        os.system('msg "%username%" Error: [Reinvestment per year] value invalid, range: (-100,000 - 100,000).')
+        return
 
     # same 'algorithm' as in version 1
     Record = [i]
@@ -36,7 +56,7 @@ def Calculate():
 
     result1 = Label(text="Total: ${}, Over {} years, at an interest of {}%/year".format(T,p,r)).grid(row=11, column=2)
     result2 = Label(text="with an annual reinvestment of {}".format(a)).grid(row=12, column=2)
-    result3 =Label(text="{}".format(Record)).grid(row=13, column=2)
+    result3 =Label(text="History {}".format(Record)).grid(row=13, column=2)
 
 
 calculate_button = Button(text="Calculate", command=Calculate).grid(column=2)
