@@ -59,7 +59,7 @@ def Calculate():
     result2 = Label(text="with an annual reinvestment of {}".format(a)).grid(row=12, column=2)
     result3 =Label(text="History {}".format(Record)).grid(row=13, column=2)
 
-
-calculate_button = Button(text="Calculate", command=Calculate).grid(column=2)
+root.bind('<Return>', lambda event: Calculate()) # calculate when press ENTER
+calculate_button = Button(text="Calculate", command=Calculate).grid(column=2) # calculate button
 
 root.mainloop()
