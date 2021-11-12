@@ -12,7 +12,7 @@ while True: # repeat
     RATE = r/100+1 # converts rate from 8.5% to x1.085
     T = i*RATE # first year
     for x in range(1,p): # repeat
-        T=T*RATE+a # Total = (previous total) X (Annual Percentage Yield) + (reinvestment amount
+        T=T*RATE+a # Total = (previous total) X (Annual Percentage Yield) + (reinvestment amount)
         record.append(round(T,2)) # add Total to a record, rounded to 2 dp
     T = round(T,2) # Round total to 2 dp
 
