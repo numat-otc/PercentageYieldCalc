@@ -4,6 +4,7 @@ import os # windows terminal commands
 root = Tk()
 root.title("")  # empty title ("tk" by default)
 
+# GUI
 Label(text="Annual Interest Investment Calculator").grid(column=2) # title
 
 initial_text            = Label(text="Initial investment:").grid(column=2)
